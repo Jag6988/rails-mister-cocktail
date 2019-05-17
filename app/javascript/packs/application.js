@@ -14,5 +14,23 @@
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-
+import 'bootstrap';
 console.log('Hello World from Webpacker')
+
+
+const scan = document.querySelector("#start");
+scan.addEventListener('click', (webcam)=>{
+webcam.preventDefault();
+
+const video = document.querySelector("#videoElement");
+
+if (navigator.mediaDevices.getUserMedia) {
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(function (stream) {
+      video.srcObject = stream;
+    })
+    .catch(function (err0r) {
+      console.log("Something went wrong!");
+    });
+}
+});
